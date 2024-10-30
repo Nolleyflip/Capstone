@@ -12,7 +12,11 @@ require('./middlewares/passport-middleware')
 //initialize middlewares
 app.use(express.json())
 app.use(cookieParser())
-app.use(cors({ origin: CLIENT_URL, credentials: true } ))
+app.use(cors({
+  origin: '*',
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
 app.use(passport.initialize())
 app.use(morgan('dev'))
 
