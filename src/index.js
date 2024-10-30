@@ -13,9 +13,8 @@ require('./middlewares/passport-middleware')
 app.use(express.json())
 app.use(cookieParser())
 app.use(cors({
-  origin: '*',
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization']
+  origin: 'https://serene-choux-5bc23c.netlify.app',
+  credentials: true
 }));
 app.use(passport.initialize())
 app.use(morgan('dev'))
