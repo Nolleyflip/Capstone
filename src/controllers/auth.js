@@ -54,7 +54,13 @@ exports.login = async (req, res) => {
   try {
     const token = await sign(payload, SECRET)
 
-    return res.status(200).cookie('token', token, { httpOnly: true }).json({
+    return res.status(200).cookie('token', token, {
+      httpOnly: true,
+      secure: true, // Required for HTTPS
+      sameSite: 'none', // Important for cross-site cookies
+      maxAge: 24 * 60 * 60 * 1000, // 24 hours
+      domain: process.env.NODE_ENV === 'production' ? '.your-domain.com' : 'localhost'
+    }).json({
       success: true,
       message: 'Logged in successfully',
       user: {
