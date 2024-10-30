@@ -59,7 +59,7 @@ exports.login = async (req, res) => {
       secure: true, // Required for HTTPS
       sameSite: 'none', // Important for cross-site cookies
       maxAge: 24 * 60 * 60 * 1000, // 24 hours
-      domain: process.env.NODE_ENV === 'production' ? '.your-domain.com' : 'localhost'
+      domain: "https://capstone-2-bcw7.onrender.com"
     }).json({
       success: true,
       message: 'Logged in successfully',
